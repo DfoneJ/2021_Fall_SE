@@ -1,0 +1,73 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'idea'
+apply plugin: 'com.bmuschko.tomcat'
+apply plugin: "org.sonarqube"
+apply plugin: "jacoco"
+
+//group 'org.example'
+version '1.0-SNAPSHOT'
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+
+sourceCompatibility = 1.8
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
+}
+
+test.finalizedBy jacocoTestReport
+
+sonarqube {
+    properties {
+        property "projectKey", "GitRepositoryAnalysisSystem"
+        property "sonar.host.url", "http://140.124.181.10:9000"
+        property "sonar.login", "a44ffb2691118216b170615603b83dec7c6f5cbf"
+    }
+}
+
+tasks.named('sonarqube').configure {
+    dependsOn test
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.bmuschko:gradle-tomcat-plugin:2.5'
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.7"
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    implementation 'junit:junit:4.13.1'
+
+
+    // https://mvnrepository.com/artifact/org.json/json
+    compile group: 'org.json', name: 'json', version: '20201115'
+    compile group: 'org.springframework', name: 'spring-test', version: '4.3.3.RELEASE'
+    compile group: 'org.springframework', name: 'spring-web', version: '5.3.2'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.18'
+    providedCompile "javax.servlet:javax.servlet-api:3.1.0"
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    def tomcatVersion = '8.5.16'
+    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+            "org.apache.tomcat.embed:tomcat-embed-logging-juli:8.5.2",
+            "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+}
+tomcat {
+    httpProtocol = 'org.apache.coyote.http11.Http11Nio2Protocol'
+    ajpProtocol  = 'org.apache.coyote.ajp.AjpNio2Protocol'
+}

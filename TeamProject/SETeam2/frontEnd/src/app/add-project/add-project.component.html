@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Site made with Mobirise Website Builder v5.2.0, https://mobirise.com -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="generator" content="Mobirise v5.2.0, mobirise.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="shortcut icon" href="assets/images/analysis-117x117.png" type="image/x-icon">
+    <meta name="description" content="">
+
+
+    <title>ImportRepo</title>
+    <link rel="stylesheet" href="../../assets/web/assets/mobirise-icons2/mobirise2.css">
+    <link rel="stylesheet" href="../../assets/tether/tether.min.css">
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="../../assets/dropdown/css/style.css">
+    <link rel="stylesheet" href="../../assets/socicon/css/styles.css">
+    <link rel="stylesheet" href="../../assets/theme/css/style.css">
+    <link rel="preload" as="style" href="../../assets/mobirise/css/mbr-additional.css">
+    <link rel="stylesheet" href="../../assets/mobirise/css/mbr-additional.css" type="text/css">
+
+
+</head>
+
+<body>
+  <app-header></app-header>
+  <div class="row" style="padding:10px 100px 10px 100px;">
+    <div class="col-2">
+      <table>
+        <tr><img class="HeadSticker" src="./assets/images/user.png" width="200px" height="200px"></tr>
+        <tr class="welcome">Welcome</tr>
+        <tr class="welcome" style="font-size:20px;">{{UserName}}</tr>
+      </table>
+    </div>
+
+    <div class="col-8">
+      <br>
+      <div style="font-size:40px;color:#566573;text-align:left;font-family:Arial,sans-serif;"><b>Create New Project</b></div>
+      <br>
+      <form action="" class="addProject" method="post"><!--THIS-->
+        <table class="NewProjectTable">
+
+          <tr class="P-URLs">
+            <div class="display-4">
+              <b>1. Import Github Repository : </b><br>
+              <input class="input" type="text" name="FullNameofUser" placeholder="Input Repo url:" [(ngModel)]="InputGitRepoUrl" >
+              <button mat-button color="primary" class="AddUrl" type="submit" (click)="CheckGitRepoUrlVaild()">Add</button><br>
+              <span style="margin-left:20px;">Imported Repos : {{InputGitRepoUrlList.length}}</span><br>
+              <span style="margin-left:20px;">{{projectImportMsg}}</span>
+            </div>
+          </tr>
+
+          <tr class="P-name">
+            <div class="display-4">
+              <b>2. Project Name For New Project : </b><br>
+              <input class="input" type="text" name="FullNameofUser" maxlength="20" placeholder="Project Name" required [(ngModel)]="NameofProject" >
+            </div>
+          </tr>
+
+          <tr class="P-description">
+            <div class="display-4 ">
+              <b>3. Project Description (optional) :</b><br>
+              <textarea [(ngModel)]="DesciptionOfProject" class="Description-textarea" id="ProjectDescriptionInputText" name="ProjectDescriptionInputTextArea" rows="10" cols="100" size="80%" maxlength="150" placeholder="Less Than 200 words" type="text" onkeyup=""></textarea>
+            </div>
+          </tr>
+
+        </table>
+
+        <div style="text-align:center;" class="display-4"><button mat-stroked-button  color="warn" type="submit" class = "ProjectCreation" (click)="CreatProject()" >Create Project</button></div><!--THIS-->
+
+      </form>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/popper/popper.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/dropdown/js/nav-dropdown.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+</body>
+</html>

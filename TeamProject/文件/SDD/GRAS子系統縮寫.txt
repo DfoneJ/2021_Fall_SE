@@ -1,0 +1,5 @@
+UIVMS：User Identity Verification and Management Subsystem
+RMS：Repository Management Subsystem
+DMS：Database Management Subsystem
+DB：Database
+SQMS：SonarQube Management Subsystem
